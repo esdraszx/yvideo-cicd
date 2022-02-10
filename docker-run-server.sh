@@ -21,7 +21,7 @@ echo "Starting Docker"
 echo "username $username"
 #echo "id: $id   group:  $group_id"
 
-docker run -u $id:[$group_id] --rm -d --name jenkins-casc -p $port:8080 -p 50000:50000 -v /srv/y-video-back-end:/srv/y-video-back-end -v /srv/jenkins-data:/var/jenkins_home -v /var/lib/jenkins/.ssh:/var/lib/jenkins/.ssh --env BACKEND_KEY=$backend_key --env FRONTEND_KEY=$frontend_key jenkinsci:jcasc
+docker run -u $id:[$group_id] --rm -d --name jenkins-casc -p $port:8080 -p 50000:50000 -v /srv/y-video-back-end:/srv/y-video-back-end -v /srv/jenkins-data:/var/jenkins_home -v /var/lib/jenkins/.ssh:/var/lib/jenkins/.ssh --env BACKEND_KEY="$backend_key" --env FRONTEND_KEY="$frontend_key" jenkinsci:jcasc
 
 echo "Docker Run COMPLETE"
 
