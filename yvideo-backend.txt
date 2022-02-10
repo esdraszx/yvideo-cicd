@@ -1,0 +1,29 @@
+pipeline {
+  agent any
+  stages {
+    stage('Checkout Scm') {
+      steps {
+        git(credentialsId: 'esdras-back', url: 'https://github.com/esdraszx/yvideoback.git')
+      }
+    }
+
+    stage('Shell script 0') {
+      steps {
+        sh '''#The current directory is jenkins home. We need to do everything in /srv/y-video-back-end/y-video-back-end
+#the front-end should have been built the last time there was an update for the front-end so there is no need to build it again.
+#this job will be triggered 
+#	after the front-end runs
+#	a change to the back-end repository
+
+
+cd /srv/y-video-back-end
+
+./server-deploy.sh'''
+      }
+    }
+
+  }
+  triggers {
+    upstream(upstreamProjects: 'yvideo-frontend', threshold: hudson.model.Result.SUCCESS)
+  }
+}

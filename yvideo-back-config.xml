@@ -1,0 +1,95 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.34.1">
+      <projectUrl>https://github.com/esdraszx/yvideoback.git/</projectUrl>
+      <displayName></displayName>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@4.10.0">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/esdraszx/yvideoback.git</url>
+        <credentialsId>esdras-back</credentialsId>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="empty-list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec></spec>
+      <upstreamProjects>yvideo-frontend</upstreamProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
+    <org.jenkinsci.plugins.github.pullrequest.GitHubPRTrigger plugin="github-pullrequest@0.3.0">
+      <spec></spec>
+      <triggerMode>HEAVY_HOOKS</triggerMode>
+      <cancelQueued>false</cancelQueued>
+      <abortRunning>false</abortRunning>
+      <skipFirstRun>false</skipFirstRun>
+      <repoProviders>
+        <com.github.kostyasha.github.integration.generic.repoprovider.GitHubPluginRepoProvider>
+          <cacheConnection>true</cacheConnection>
+          <manageHooks>true</manageHooks>
+          <repoPermission>ADMIN</repoPermission>
+        </com.github.kostyasha.github.integration.generic.repoprovider.GitHubPluginRepoProvider>
+      </repoProviders>
+      <errorsAction>
+        <description>GitHub Pull Requests Trigger Errors</description>
+        <errors class="java.util.Collections$SynchronizedSet" serialization="custom">
+          <java.util.Collections_-SynchronizedCollection>
+            <default>
+              <c class="set"/>
+              <mutex class="java.util.Collections$SynchronizedSet" reference="../../.."/>
+            </default>
+          </java.util.Collections_-SynchronizedCollection>
+        </errors>
+      </errorsAction>
+      <events>
+        <org.jenkinsci.plugins.github.pullrequest.events.impl.GitHubPRCloseEvent/>
+      </events>
+      <preStatus>false</preStatus>
+    </org.jenkinsci.plugins.github.pullrequest.GitHubPRTrigger>
+    <com.cloudbees.jenkins.GitHubPushTrigger plugin="github@1.34.1">
+      <spec></spec>
+    </com.cloudbees.jenkins.GitHubPushTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#The current directory is jenkins home. We need to do everything in /srv/y-video-back-end/y-video-back-end
+#the front-end should have been built the last time there was an update for the front-end so there is no need to build it again.
+#this job will be triggered 
+#	after the front-end runs
+#	a change to the back-end repository
+
+
+cd /srv/y-video-back-end
+
+./server-deploy.sh</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
