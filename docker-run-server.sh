@@ -28,7 +28,7 @@ echo "Running docker as $username"
 #echo "id: $id   group:  $group_id"
 
 #GET CONTAINER ID FROM DOCKER RUN COMMAND
-container_id=$(docker run -u $id:$group_id --rm -d --name jenkins-casc -p $port:8080 -p 50000:50000 -v /srv/y-video-back-end:/srv/y-video-back-end -v /srv/jenkins-data:/var/jenkins_home -v /var/lib/jenkins/.ssh:/var/lib/jenkins/.ssh --env BACKEND_KEY="$backend_key" --env FRONTEND_KEY="$frontend_key" jenkins:jcasc)
+container_id=$(docker run -u $id:$group_id --rm -d --name jenkins-jcasc -p $port:8080 -p 50000:50000 -v /srv/y-video-back-end:/srv/y-video-back-end -v /srv/jenkins-data:/var/jenkins_home -v /var/lib/jenkins/.ssh:/var/lib/jenkins/.ssh --env BACKEND_KEY="$backend_key" --env FRONTEND_KEY="$frontend_key" jenkins:jcasc)
 
 
 #CHECK TO SEE IF THE CONTAINER WAS CREATED
