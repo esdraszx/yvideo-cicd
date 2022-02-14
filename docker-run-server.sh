@@ -35,15 +35,15 @@ container_id=$(docker run -u $id:$group_id --rm -d --name jenkins-casc -p $port:
 if [ -n $container_id ]; then
 	container_success=$(docker inspect -f {{.State.Running}} $container_id)
 else
-	echo " ${RED}ERROR: failed to create container"
+	echo "ERROR: failed to create container"
 	exit 1
 fi
 
 #CHECK TO SEE IF THE CONTAINER IS RUNNING
 if [ $container_success ]; then
-	echo "${GREEN}Container is up and running with id ${DEFAULT_COLOR} $container_id \n"
+	echo "Container is up and running with id $container_id \n"
 else
-	echo " ${RED}ERROR: the container was created, but it is not running"
+	echo "ERROR: the container was created, but it is not running"
 	exit 1
 fi
 

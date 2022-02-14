@@ -54,7 +54,7 @@ credentials:
 unclassified:
   location:
     url: http://localhost:8080/
-	#url: jenkins.yvideodev.byu.edu
+#url: jenkins.yvideodev.byu.edu
   githubpluginconfig:
     configs:
       - name: ""
