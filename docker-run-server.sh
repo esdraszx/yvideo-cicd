@@ -10,9 +10,9 @@ backend_key=$(cat /var/lib/jenkins/.ssh/backend_id_ed25519)
 frontend_key=$(cat /var/lib/jenkins/.ssh/frontend_id_ed25519)
 crumb_json=""
 container_succes=false
-RED='\e[1;31m'
-GREEN='\e[0;32m'
-DEFAULT_COLOR='\e[0m'
+
+#DELETE PREVIOUS IMAGE INFORMATION
+rm -rf /srv/jenkins-data/* #DO THIS ONLY IF YOU WILL BUILD THE IMAGE AGAIN
 
 #SEND THE CONFIGURATION FILE TO JENKINS DATA THIS DIRECTORY SHOULD EXIST BEFORE RUNNING THE COMMAND
 cp casc.yaml /srv/jenkins-data/casc.yaml
@@ -21,7 +21,7 @@ cp casc.yaml /srv/jenkins-data/casc.yaml
 #docker pull jenkinsci/blueocean
 
 #building an image again will delete everything in the image or tag
-#docker build -t jenkins:jcasc . #-> note the period indicating the current directory
+docker build -t jenkins:jcasc . #-> note the period indicating the current directory
 
 echo "Starting Script"
 echo "Running docker as $username"
@@ -76,9 +76,9 @@ echo $user_token > latest_user_token.txt
 echo "Creating Jobs"
 
 #CREATES A JOB FROM AN EXISTING XML FILE
-curl -s -XPOST '$jenkins_url/createItem?name=yvideo-frontend' -u yvideoadmin:$user_token --data-binary @yvideo-front-config.xml -H "Content-Type:text/xml" #the xml file should be in the current directory
+curl -s -XPOST "$jenkins_url/createItem?name=yvideo-frontend" -u yvideoadmin:$user_token --data-binary @yvideo-front-config.xml -H "Content-Type:text/xml" #the xml file should be in the current directory
 
 #CREATES A JOB FROM AN EXISTING XML FILE
-curl -s -XPOST '$jenkins_url/createItem?name=yvideo-backend' -u yvideoadmin:$user_token --data-binary @yvideo-back-config.xml -H "Content-Type:text/xml" #the xml file should be in the current directory
+curl -s -XPOST "$jenkins_url/createItem?name=yvideo-backend" -u yvideoadmin:$user_token --data-binary @yvideo-back-config.xml -H "Content-Type:text/xml" #the xml file should be in the current directory
 
 echo "Finished"

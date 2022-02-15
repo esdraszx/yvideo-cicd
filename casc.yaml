@@ -28,17 +28,17 @@ credentials:
               secret: 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
           - basicSSHUserPrivateKey:
               scope: GLOBAL
-              id: y-video-back-end_deploy_key
+              id: yvideo_backend_deploy_key
               username: reynoldsnlp@users.noreply.github.com
-              description: "SSH passphrase with private key file. Private key provided"
+              description: "Back-end cred"
               privateKeySource:
                 directEntry:
                   privateKey: ${BACKEND_KEY}
           - basicSSHUserPrivateKey:
               scope: GLOBAL
-              id: y-video-front-end_deploy_key 
+              id: yvideo_frontend_deploy_key 
               username: reynoldsnlp@users.noreply.github.com
-              description: "SSH passphrase with private key file. Private key provided"
+              description: "Front-end cred"
               privateKeySource:
                 directEntry:
                   privateKey: ${FRONTEND_KEY}
@@ -49,15 +49,15 @@ credentials:
               description: "esdras-back"
               privateKeySource:
                 directEntry:
-                  privateKey: ${FRONTEND_KEY}
+                  privateKey: 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
 
 unclassified:
   location:
-    url: http://localhost:8080/
-#url: jenkins.yvideodev.byu.edu
+    #url: http://localhost:8080/
+    url: jenkins.yvideodev.byu.edu
   githubpluginconfig:
     configs:
       - name: ""
         apiUrl: "https://api.github.com"
-        credentialsId: "[github-server]"
+        credentialsId: "github-server"
         manageHooks: false

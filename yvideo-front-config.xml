@@ -5,7 +5,7 @@
   <keepDependencies>false</keepDependencies>
   <properties>
     <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.34.1">
-      <projectUrl>https://github.com/esdraszx/yvideo-client.git/</projectUrl>
+      <projectUrl>https://github.com/BYU-ODH/yvideo-client.git/</projectUrl>
       <displayName></displayName>
     </com.coravy.hudson.plugins.github.GithubProjectProperty>
   </properties>
@@ -13,8 +13,8 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/esdraszx/yvideo-client.git</url>
-        <credentialsId>github-new</credentialsId>
+        <url>https://github.com/BYU-ODH/yvideo-client.git</url>
+        <credentialsId>yvideo_frontend_deploy_key</credentialsId>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -72,13 +72,11 @@
 #	a change to the front-end repository
 
 
-cd /srv/y-video-back-end/y-video-back-end
-
-cd yvideo-client
+cd /srv/y-video-back-end/y-video-back-end/yvideo-client
 
 git pull origin develop
 
-cd ../
+cd /srv/y-video-back-end/y-video-back-end/
 
 ./build-front-end.sh
 

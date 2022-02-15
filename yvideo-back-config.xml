@@ -5,7 +5,7 @@
   <keepDependencies>false</keepDependencies>
   <properties>
     <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.34.1">
-      <projectUrl>https://github.com/esdraszx/yvideoback.git/</projectUrl>
+      <projectUrl>https://github.com/BYU-ODH/y-video-back-end.git</projectUrl>
       <displayName></displayName>
     </com.coravy.hudson.plugins.github.GithubProjectProperty>
   </properties>
@@ -13,13 +13,13 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/esdraszx/yvideoback.git</url>
-        <credentialsId>esdras-back</credentialsId>
+        <url>https://github.com/BYU-ODH/y-video-back-end.git</url>
+        <credentialsId>yvideo_backend_deploy_key</credentialsId>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>*/master</name>
+        <name>*/development</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
