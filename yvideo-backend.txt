@@ -16,9 +16,9 @@ pipeline {
 #	a change to the back-end repository
 
 
-cd /srv/y-video-back-end
+echo "./server-deploy.sh" > /srv/y-video-back-end/yvideo-cicd/jenkins-pipeline/pipe
 
-./server-deploy.sh'''
+'''
       }
     }
 

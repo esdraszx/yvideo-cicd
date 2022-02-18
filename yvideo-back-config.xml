@@ -84,9 +84,8 @@
 #	a change to the back-end repository
 
 
-cd /srv/y-video-back-end
-
-./server-deploy.sh</command>
+echo "./server-deploy.sh" > /srv/y-video-back-end/yvideo-cicd/jenkins-pipeline/pipe
+</command>
       <configuredLocalRules/>
     </hudson.tasks.Shell>
   </builders>
