@@ -76,9 +76,7 @@ cd /srv/y-video-back-end/y-video-back-end/yvideo-client
 
 git pull origin develop
 
-cd /srv/y-video-back-end/y-video-back-end/
-
-./build-front-end.sh
+echo "/srv/y-video-back-end/y-video-back-end/build-front-end.sh > /srv/y-video-back-end/yvideo-cicd/jenkins-pipeline/pipe
 
 # After this the back-end triggers and will deploy the changes</command>
       <configuredLocalRules/>
