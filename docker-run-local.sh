@@ -83,4 +83,14 @@ curl -s -XPOST "$jenkins_url/createItem?name=yvideo-frontend" -u yvideoadmin:$us
 #CREATES A JOB FROM AN EXISTING XML FILE
 curl -s -XPOST "$jenkins_url/createItem?name=yvideo-backend" -u yvideoadmin:$user_token --data-binary @yvideo-back-config.xml -H "Content-Type:text/xml" #the xml file should be in the current directory
 
-if [ -n "Finished" ]; then echo "Finished"; fi;
+echo "Finished"
+
+
+#INSTALL NPM AND LEININGEN IN THE CONTAINER
+#docker exec -d --user=root jenkins-jcasc wget -P /etc/apk/keys/ https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
+
+#RUN apk add --no-cache --repository=https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-leiningen leiningen=2.7.1-r0
+#docker exec -d --user=root jenkins-jcasc apk add --no-cache --repository=https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-leiningen leiningen=2.9.7-r0
+
+#RUN apk add --update nodejs npm
+#docker exec -d --user=root jenkins-jcasc apk add --update nodejs npm
