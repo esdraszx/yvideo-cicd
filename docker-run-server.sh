@@ -50,15 +50,16 @@ fi
 #WHEN JENKINS IS READY GET CRUMB COOKIE AND CREATE JOBS
 while [ -z $crumb_json ]
 do
-	echo "Waiting for Jenkins to be Ready"
+	echo "Waiting for Jenkins to be ready..."
 	sleep 5s
 	response=$(curl -s --cookie-jar /tmp/cookies -u yvideoadmin:yvideoadminpassword $jenkins_url/crumbIssuer/api/json)
-	if [ -n $response ]; then
+	response_first_char=${response:0:1}
+	if [ "$response_first_char" == "{" ]; then
 		crumb_json=$(echo $response)
 	fi
 done
 
-echo "Jenkins is ready. Creating Jobs"
+echo "Jenkins is ready. Creating jobs..."
 
 #GET CRUMB TOKEN FROM CRUMB RESPONSE
 crumb_token=$(echo $crumb_json | jq -r '.crumb')
@@ -80,5 +81,11 @@ curl -s -XPOST "$jenkins_url/createItem?name=yvideo-frontend" -u yvideoadmin:$us
 
 #CREATES A JOB FROM AN EXISTING XML FILE
 curl -s -XPOST "$jenkins_url/createItem?name=yvideo-backend" -u yvideoadmin:$user_token --data-binary @yvideo-back-config.xml -H "Content-Type:text/xml" #the xml file should be in the current directory
+
+echo "Next steps"
+
+echo "Copy token to github webhook in the github repositories for the front and back end. Token: $user_token"
+
+echo "Access Jenkins and apply the config for both frontend and backend jobs. If everything is good, the config will show a SAVED message. If there is a problem, a log will be created"
 
 echo "Finished"

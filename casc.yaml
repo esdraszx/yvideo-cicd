@@ -36,7 +36,7 @@ credentials:
                   privateKey: ${BACKEND_KEY}
           - basicSSHUserPrivateKey:
               scope: GLOBAL
-              id: yvideo_frontend_deploy_key 
+              id: yvideo_frontend_deploy_key
               username: reynoldsnlp@users.noreply.github.com
               description: "Front-end cred"
               privateKeySource:
