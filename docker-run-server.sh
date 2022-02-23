@@ -12,16 +12,16 @@ crumb_json=""
 container_succes=false
 
 #DELETE PREVIOUS IMAGE INFORMATION
-rm -rf /srv/jenkins-data/* #DO THIS ONLY IF YOU WILL BUILD THE IMAGE AGAIN
+#rm -rf /srv/jenkins-data/* #DO THIS ONLY IF YOU WILL BUILD THE IMAGE AGAIN
 
 #SEND THE CONFIGURATION FILE TO JENKINS DATA THIS DIRECTORY SHOULD EXIST BEFORE RUNNING THE COMMAND
-cp casc.yaml /srv/jenkins-data/casc.yaml
+#cp casc.yaml /srv/jenkins-data/casc.yaml
 
 #pull image from docker if needed
 #docker pull jenkinsci/blueocean
 
 #building an image again will delete everything in the image or tag
-docker build -t jenkins:jcasc . #-> note the period indicating the current directory
+#docker build -t jenkins:jcasc . #-> note the period indicating the current directory
 
 echo "Starting Script"
 echo "Running docker as $username"
@@ -84,8 +84,8 @@ curl -s -XPOST "$jenkins_url/createItem?name=yvideo-backend" -u yvideoadmin:$use
 
 echo "Next steps"
 
-echo "Copy token to github webhook in the github repositories for the front and back end. Token: $user_token"
+echo "Copy token to github webhook in the github repositories for the front and back end. \n Token: $user_token \n"
 
-echo "Access Jenkins and apply the config for both frontend and backend jobs. If everything is good, the config will show a SAVED message. If there is a problem, a log will be created"
+echo "Access Jenkins and apply the config for both frontend and backend jobs.\n If everything is good, the config will show a SAVED message.\n If there is a problem, a log will be created\n"
 
 echo "Finished"
