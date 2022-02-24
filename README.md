@@ -1,6 +1,6 @@
 # Table of Contents
 
-
+* [Requirements](#requirements)
 * [Docker Instructions](#docker)
 * [Jenkins Instructions](#jenkins)
 * [Automation Script](#automation-script-steps)
@@ -8,6 +8,16 @@
 # Jenkins & Docker Instructions
 For the CI/CD pipeline that connects the github repositories to our server, we decided to use Jenkins. However, instead of running Jenkins in the host, we opted to use a container to add one layer between Jenkins and the host for security purposes and migration benefits. 
 There is a docker image that already has jenkins installed, so we are using that image instead of creating our own. The first step is to get docker ready. 
+
+## Requirements
+
+Before getting started with docker and jenkins some steps might be needed
+
+```
+$ sudo su jenkins
+$ cd /srv/y-video-back-end
+$ git clone **this repo**
+```
 
 ## Docker
 
@@ -44,6 +54,12 @@ This docker command runs the image with the parameters necessary to run the cont
 ## Jenkins
 ### Configuration
 After the docker container is running. The image already has jenkins so there is no need to install it again. However, it is necessary to pass configuration as code from the ```casc.yaml``` file. This file contains all the basic configuration for jenkins including credentials, security, authentication, location, and github plugin configuration.
+
+### Credentials
+Credentials are stored in a json file in the server and can be retrived by the automation script. The credentials are used by the script to call the Jenkins API to generate an API token for the user
+
+### API Token
+Instead of using the username and password for every API call, Jenkins allows a user to create an API token which will be passed in every request for authentication purposes. This token is stored in a file in the server in case it is needed (**it will be used to authenticate the github webhook**)
 
 ### Jobs
 Jenkins jobs can be created from an existing ```job.yaml``` file. In our project we use ```yvideo-back-config.yaml``` and ```yvideo-front-config.yaml```. We can use the jenkins API in the container to create jobs with the following endpoint
