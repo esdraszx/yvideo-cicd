@@ -117,5 +117,5 @@ The docker script can be broken down into steps
 **The user token generated needs to be added to the github webhook as the secret using ```x-www-url-encode```**. The token is saved to a file in the current working directory.  
 
 10. Create jobs using Jenkins API
-11. Access Jenkins instance and apply job configuration to make sure changes are saved **See script for more details** 
+11. Access Jenkins instance and apply job configuration to make sure changes are saved **See script for more details**. In the job config specify the branch to build depending in the Jenkins instance is for dev or prod.
 
