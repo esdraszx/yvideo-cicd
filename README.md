@@ -40,7 +40,7 @@ COPY casc.yaml /var/jenkins_home/casc.yaml #pass configuration to container
 
 Build the image through the dockerfile which contains all links to the plugins and casc any changes to the image would require a new build.
 ```
-docker build -t jenkins:jcasc .  <- see the period at the end meaning this is the current directory to get the Dockerfile
+docker build -t jenkins:jcasc .  #<- see the period at the end meaning this is the current directory to get the Dockerfile
 ```
 ### RUN NEW IMAGE
 **See script for more information about variables**
