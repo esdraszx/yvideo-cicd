@@ -17,7 +17,9 @@ RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt #run 
 COPY casc.yaml /var/jenkins_home/casc.yaml #pass configuration to container
 ```
 **Plugins are stored in a text file that can be read by the container**
+
 **Configuration as code is in the casc.yaml in a key value pair format**
+
 Build the image through the dockerfile which contains all links to the plugins and casc any changes to the image would require a new build.
 ```
 docker build -t jenkins:jcasc .  <- see the period at the end meaning this is the current directory to get the Dockerfile
