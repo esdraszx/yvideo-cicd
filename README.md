@@ -1,3 +1,10 @@
+# Table of Contents
+
+
+* [Docker Instructions](#docker)
+* [Jenkins Instructions](#jenkins)
+* [Automation Script](#automation-script-steps)
+
 # Jenkins & Docker Instructions
 For the CI/CD pipeline that connects the github repositories to our server, we decided to use Jenkins. However, instead of running Jenkins in the host, we opted to use a container to add one layer between Jenkins and the host for security purposes and migration benefits. 
 There is a docker image that already has jenkins installed, so we are using that image instead of creating our own. The first step is to get docker ready. 
@@ -47,9 +54,15 @@ curl -s -XPOST 'http://serverAddress.com/createItem?name=yvideo-frontend' -u yvi
 ```
 **The @config.yaml requires the config to be in the same directory as the running script or command**
 
-# Server Script
-Everything described above has been automated using a shell script. The purpose of the script is to minimize the manual work by the developer when creating a new Jenkins instance. The development and the production server should both use the same ```docker-run-server.sh```. There is a ```docker-run-local.sh``` which contains commands for creating a local instance for testing. 
+# Automation Server Script for Docker & Jenkins
+
+Everything described above has been automated using a shell script. The purpose of the script is to minimize the manual work by the developer when creating a new Jenkins instance. 
+
+## Automation Script Steps
+
+The development and the production server should both use the same ```docker-run-server.sh```. There is a ```docker-run-local.sh``` which contains commands for creating a local instance for testing. 
 The docker script can be broken down into steps
+
 1. Variables
 
 
