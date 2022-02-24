@@ -84,7 +84,7 @@ The docker script can be broken down into steps
 
 ```rm -rf /srv/jenkins-data/*```
 
-3. Pass configuration as code to the jenkins home directory **OPTIONAL**
+3. Pass configuration as code to the jenkins home directory
 
 ```cp casc.yaml /srv/jenkins-data/casc.yaml```
 
