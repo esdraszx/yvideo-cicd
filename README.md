@@ -6,17 +6,18 @@
 * [Automation Script](#automation-script-steps)
 
 # Jenkins & Docker Instructions
-For the CI/CD pipeline that connects the github repositories to our server, we decided to use Jenkins. However, instead of running Jenkins in the host, we opted to use a container to add one layer between Jenkins and the host for security purposes and migration benefits. 
-There is a docker image that already has jenkins installed, so we are using that image instead of creating our own. The first step is to get docker ready. 
+For the CI/CD pipeline that connects the github repositories to our server, it was decided to use Jenkins. However, instead of running Jenkins in the host, a container is used to add one layer between Jenkins and the host for security purposes and migration benefits. 
+There is a docker image that already has jenkins installed, so it will be used instead of creating one. The first step is to get docker ready. 
 
 ## Requirements
 
-Before getting started with docker and jenkins some steps might be needed
+Before getting started with docker and jenkins some steps might be needed. Create the directories that docker and jenkins will use in their programs and clone this repository into a specific folder.
 
 ```
 $ sudo su jenkins
+$ mkdir /srv/jenkins-data
 $ cd /srv/y-video-back-end
-$ git clone **this repo**
+$ git clone **this repo** yvideo-cicd **DO NOT EXCLUDE THE FOLDER AT THE END**
 ```
 
 ## Docker
@@ -62,7 +63,7 @@ Credentials are stored in a json file in the server and can be retrived by the a
 Instead of using the username and password for every API call, Jenkins allows a user to create an API token which will be passed in every request for authentication purposes. This token is stored in a file in the server in case it is needed (**it will be used to authenticate the github webhook**)
 
 ### Jobs
-Jenkins jobs can be created from an existing ```job.yaml``` file. In our project we use ```yvideo-back-config.yaml``` and ```yvideo-front-config.yaml```. We can use the jenkins API in the container to create jobs with the following endpoint
+Jenkins jobs can be created from an existing ```job.yaml``` file. In our project, ```yvideo-back-config.yaml``` and ```yvideo-front-config.yaml``` are used. The jenkins API in the container can be used to create jobs with the following endpoint
 
 **API CALL TO CREATE A NEW JOB FROM EXISTING XML FILE**
 ```
