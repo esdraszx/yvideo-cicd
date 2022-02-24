@@ -17,7 +17,7 @@ Before getting started with docker and jenkins some steps might be needed. Creat
 $ sudo su jenkins
 $ mkdir /srv/jenkins-data
 $ cd /srv/y-video-back-end
-$ git clone **this repo** yvideo-cicd **DO NOT EXCLUDE THE FOLDER AT THE END**
+$ git clone <this repo> yvideo-cicd #**DO NOT EXCLUDE THE FOLDER AT THE END**
 ```
 
 ## Docker
