@@ -101,7 +101,7 @@ The docker script can be broken down into steps
 8. After Jenkins is ready, get crumb token for authentication
 9. Generate a user API token and save the token in a file for later use in github
 
-**The user token generated needs to be added to the github webhook as the secret using ```x-www-url-encode```**
+**The user token generated needs to be added to the github webhook as the secret using ```x-www-url-encode```**. The token is saved to a file in the current working directory.  
 
 10. Create jobs using Jenkins API
 11. Access Jenkins instance and apply job configuration to make sure changes are saved **See script for more details** 
