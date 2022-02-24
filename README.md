@@ -78,18 +78,29 @@ The docker script can be broken down into steps
 **user_token** -> user api token
 
 2. Remove all data from the previous Jenkins instance in the container **OPTIONAL**
+
+
 ```rm -rf /srv/jenkins-data/*```
+
 3. Pass configuration as code to the jenkins home directory **OPTIONAL**
+
 ```cp casc.yaml /srv/jenkins-data/casc.yaml```
+
 4. Build docker image from dockerfile
+
 ```docker build -t jenkins:jcasc . #-> note the period indicating the current directory```
+
 5. Run docker container
+
 ```docker run -u $id:$group_id --rm -d --name jenkins-jcasc -p $port:8080 -p 50000:50000 -v /srv/y-video-back-end:/srv/y-video-back-end -v /srv/jenkins-data:/var/jenkins_home --env BACKEND_KEY="$backend_key" --env FRONTEND_KEY="$frontend_key" jenkins:jcasc```
+
 6. Check if the container is running or not. **See script for more details**
 7. Wait for Jenkins to be ready **See script for more details**
 8. After Jenkins is ready, get crumb token for authentication
 9. Generate a user API token and save the token in a file for later use in github
+
 **The user token generated needs to be added to the github webhook as the secret using ```x-www-url-encode```**
+
 10. Create jobs using Jenkins API
 11. Access Jenkins instance and apply job configuration to make sure changes are saved **See script for more details** 
 
