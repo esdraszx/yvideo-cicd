@@ -151,3 +151,5 @@ In this project, a named pipe is created in the host system
 ### Pipe Script
 The pipe script gets the input from the pipe and evaluates the string to execute a designated script **see script for more details jenkins-pipeline/exec-pipe.sh**
 For more information see [stackoverflow](https://stackoverflow.com/questions/32163955/how-to-run-shell-script-on-host-from-docker-container) question.
+The script can be detached from the terminal by running ```nohup -p pid```. 
+Finally, the last step is to start the script after reboot using crontab
