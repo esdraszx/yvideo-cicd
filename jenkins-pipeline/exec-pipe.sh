@@ -1,6 +1,12 @@
 #!/bin/bash
 
-while true; do eval "$(cat /srv/y-video-back-end/yvideo-cicd/jenkins-pipeline/pipe)"; done
+while true;
+do
+	command=$(cat /srv/y-video-back-end/yvideo-cicd/jenkins-pipeline/pipe)
+	if [ $command == "/srv/y-video-back-end/y-video-back-end/build-front-end.sh" ]; then
+		eval "$command"
+	fi
+done
 
 #add to cron using 
 
