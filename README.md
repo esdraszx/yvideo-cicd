@@ -5,7 +5,7 @@
 * [Docker Instructions](#docker)
 * [Jenkins Instructions](#jenkins)
 * [Automation Script](#automation-script)
-* [Automation Script Steps](#steps)
+* [Named-pipe](#named-pipe)
 
 ## Instructions
 For the CI/CD pipeline that connects the github repositories to our server, it was decided to use Jenkins. However, instead of running Jenkins in the host, a container is used to add one layer between Jenkins and the host for security purposes and migration benefits. 
