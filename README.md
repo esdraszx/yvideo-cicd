@@ -85,32 +85,21 @@ The docker script can be broken down into steps
 
 1. Variables
 
-
-**port** -> the port running the jenkins server in the host
-
-**username** -> the user running the docker command
-
-**id** -> username id. This is required to match permissions between the user in the container and the host
-
-**group_id** -> username group id.
-
-**jenkins_url** -> url to reach jenkins server from outside the host
-
-**backend_key** -> backend ssh private key for deployment
-
-**frontend_key** -> frontend ssh private key for deployment
-
-**container_id** -> the container id after ```docker run```
-
-**container_succes** -> will store information to check if the container is running
-
-**crumb_json** -> response from jenkins containing a crumb token for authentication
-
-**crumb_token** -> retrieve token from json
-
-**user_json** -> response after authentication
-
-**user_token** -> user api token
+| Name | Description |
+|-|-|
+|**port** | the port running the jenkins server in the host|
+|**username** | the user running the docker command|
+|**id** | username id. This is required to match permissions between the user in the container and the host|
+|**group_id** | username group id|
+|**jenkins_url** | url to reach jenkins server from outside the host|
+|**backend_key** | backend ssh private key for deployment|
+|**frontend_key** | frontend ssh private key for deployment|
+|**container_id** | the container id after ```docker run```|
+|**container_succes** | will store information to check if the container is running|
+|**crumb_json** | response from jenkins containing a crumb token for authentication|
+|**crumb_token** | retrieve token from json|
+|**user_json** | response after authentication|
+|**user_token** | user api token|
 
 2. Remove all data from the previous Jenkins instance in the container **OPTIONAL**
 
