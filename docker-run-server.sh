@@ -10,6 +10,8 @@ backend_key=$(cat /var/lib/jenkins/.ssh/backend_id_ed25519)
 frontend_key=$(cat /var/lib/jenkins/.ssh/frontend_id_ed25519)
 crumb_json=""
 container_succes=false
+cred_username=$(jq -r '.username' credentials.json)
+cred_password=$(jq -r '.password' credentials.json)
 
 #DELETE PREVIOUS IMAGE INFORMATION
 #rm -rf /srv/jenkins-data/* #DO THIS ONLY IF YOU WILL BUILD THE IMAGE AGAIN
@@ -52,7 +54,7 @@ while [ -z $crumb_json ]
 do
 	echo "Waiting for Jenkins to be ready..."
 	sleep 5s
-	response=$(curl -s --cookie-jar /tmp/cookies -u yvideoadmin:yvideoadminpassword $jenkins_url/crumbIssuer/api/json)
+	response=$(curl -s --cookie-jar /tmp/cookies -u $cred_username:$cred_password $jenkins_url/crumbIssuer/api/json)
 	response_first_char=${response:0:1}
 	if [ "$response_first_char" == "{" ]; then
 		crumb_json=$(echo $response)
@@ -65,7 +67,7 @@ echo "Jenkins is ready. Creating jobs..."
 crumb_token=$(echo $crumb_json | jq -r '.crumb')
 
 #CREATE API PERSONAL TOKEN
-user_json=$(curl -XPOST --cookie /tmp/cookies $jenkins_url/me/descriptorByName/jenkins.security.ApiTokenProperty/generateNewToken?newTokenName=api_token -u yvideoadmin:yvideoadminpassword  -H "Jenkins-Crumb: $crumb_token")
+user_json=$(curl -XPOST --cookie /tmp/cookies $jenkins_url/me/descriptorByName/jenkins.security.ApiTokenProperty/generateNewToken?newTokenName=api_token -u $cred_username:$cred_password  -H "Jenkins-Crumb: $crumb_token")
 
 #SAVE PERSONAL TOKEN
 user_token=$(echo $user_json | jq -r '.data.tokenValue')
@@ -77,10 +79,10 @@ echo $user_token > latest_user_token.txt
 echo "Creating Jobs"
 
 #CREATES A JOB FROM AN EXISTING XML FILE
-curl -s -XPOST "$jenkins_url/createItem?name=yvideo-frontend" -u yvideoadmin:$user_token --data-binary @yvideo-front-config.xml -H "Content-Type:text/xml" #the xml file should be in the current directory
+curl -s -XPOST "$jenkins_url/createItem?name=yvideo-frontend" -u $cred_username:$user_token --data-binary @yvideo-front-config.xml -H "Content-Type:text/xml" #the xml file should be in the current directory
 
 #CREATES A JOB FROM AN EXISTING XML FILE
-curl -s -XPOST "$jenkins_url/createItem?name=yvideo-backend" -u yvideoadmin:$user_token --data-binary @yvideo-back-config.xml -H "Content-Type:text/xml" #the xml file should be in the current directory
+curl -s -XPOST "$jenkins_url/createItem?name=yvideo-backend" -u $cred_username:$user_token --data-binary @yvideo-back-config.xml -H "Content-Type:text/xml" #the xml file should be in the current directory
 
 echo "Next steps"
 
