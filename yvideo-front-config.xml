@@ -71,7 +71,6 @@
 #this job will be triggered 
 #	a change to the front-end repository
 
-
 cd /srv/y-video-back-end/y-video-back-end/yvideo-client
 
 git pull origin develop

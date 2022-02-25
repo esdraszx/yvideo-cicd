@@ -6,6 +6,9 @@ do
 	if [ $command == "/srv/y-video-back-end/y-video-back-end/build-front-end.sh" ]; then
 		eval "$command"
 	fi
+	if [ $command == "/srv/y-video-back-end/server-deploy.sh" ]; then
+		eval "$command"
+	fi
 done
 
 #add to cron using 
