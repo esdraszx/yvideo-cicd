@@ -1,0 +1,15 @@
+ [Unit]
+ Description=Y-Video Backend Service for web startup
+ After=network.target
+
+ [Service]
+ Environment='MYAPP_PORT=8080'
+ WorkingDirectory=/srv/y-video-back-end
+ ExecStart=/usr/bin/java -Xms128m -Xmx512m -jar y-video-back-end.jar -p $MYAPP_PORT
+ User=yvideo
+ Type=simple
+ Restart=on-failure
+ RestartSec=10
+
+ [Install]
+ WantedBy=multi-user.target

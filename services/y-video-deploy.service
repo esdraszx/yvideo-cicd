@@ -1,0 +1,9 @@
+ [Unit]
+ Description=Y-Video Backend Deployment for App File IO
+
+ [Service]
+ WorkingDirectory=/srv/y-video-back-end
+ ExecStart=/bin/bash ./deploy.sh
+ User=yvideo
+ Type=simple
+ Restart=no

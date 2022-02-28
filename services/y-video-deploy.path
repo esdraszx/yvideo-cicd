@@ -1,0 +1,9 @@
+ [Unit]
+ Description="Monitor /srv/y-video-back-end/ for existence of y-video-back-end.jar file."
+
+ [Path]
+ PathChanged=/srv/y-video-back-end/docket/y-video-back-end.jar
+ Unit=y-video-deploy.service
+
+ [Install]
+ WantedBy=multi-user.target
