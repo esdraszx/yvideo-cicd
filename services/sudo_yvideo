@@ -1,0 +1,2 @@
+Cmnd_Alias YVIDEO = /bin/systemctl stop y-video-back-end, /bin/systemctl start y-video-back-end, /bin/systemctl restart y-video-back-end, /bin/systemctl status y-video-back-end
+yvideo ALL=(ALL) NOPASSWD:YVIDEO
