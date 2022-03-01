@@ -1,8 +1,8 @@
 # Table of Contents
 
 * [Instructions](#instructions)
-* [Service Requirements](#service-requirements)
-* [Server Scripts](#server-scripts)
+* [Service Requirements](service/README.md)
+* [Server Scripts](scripts/README.md)
 * [Jenkins Requirements](#jenkins-requirements)
 * [Docker Instructions](#docker)
 * [Jenkins Instructions](#jenkins)
