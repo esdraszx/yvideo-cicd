@@ -1,17 +1,16 @@
 # Table of Contents
 
-* [Instructions](#instructions)
-* [Service Requirements](#service-requirements)
-* [Server Scripts](#server-scripts)
+* [Initial Requirements](#initial-requirements)
+* [Introduction](#introduction)
 * [Jenkins Requirements](#jenkins-requirements)
 * [Docker Instructions](#docker)
 * [Jenkins Instructions](#jenkins)
 * [Jenkins Automation Script](#automation-script)
 * [Named-pipe](#named-pipe)
 
-## Instructions
-For the CI/CD pipeline that connects the github repositories to our server, it was decided to use Jenkins. However, instead of running Jenkins in the host, a container is used to add one layer between Jenkins and the host for security purposes and migration benefits. 
-There is a docker image that already has jenkins installed, so it will be used instead of creating one. The first step is to get docker ready. 
+## Initial Requirements
+
+Before starting with Jenkins & Docker, it is necessary to check if all the scripts and services are in placed. If something is missing Jenkins will fail to initiate.
 
 ### Server Scripts
 
@@ -21,7 +20,13 @@ Before creating the services, some scripts need to be in place for the services 
 
 Before running CI/CD some services need to be running in the server. Read this file for instructions [services](services/README.md)
 
+
+## Introduction
+This repository has all the required information to recreate services, scripts, and CI/CD pipeline as needed for the YVideo application. This repository is intended to be cloned into ```/srv/y-video-back-end/yvideo-cicd``` see [Jenkins Requirements](#jenkins-requirements) for more instructions. The scripts and services folder contain information that would go in other directories. 
+
 ### Jenkins Requirements
+For the CI/CD pipeline that connects the github repositories to our server, it was decided to use Jenkins. However, instead of running Jenkins in the host, a container is used to add one layer between Jenkins and the host for security purposes and migration benefits. 
+There is a docker image that already has jenkins installed, so it will be used instead of creating one. The first step is to get docker ready. 
 
 Before getting started with docker and jenkins some steps might be needed. Create the directories that docker and jenkins will use in their programs and clone this repository into a specific folder.
 
