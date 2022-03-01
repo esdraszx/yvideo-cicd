@@ -86,8 +86,8 @@ curl -s -XPOST "$jenkins_url/createItem?name=yvideo-backend" -u $cred_username:$
 
 echo "Next steps"
 
-echo "Copy token to github webhook in the github repositories for the front and back end. \n Token: $user_token \n"
+echo -e "Copy token to github webhook in the github repositories for the front and back end. \n Token: $user_token \n \n"
 
-echo "Access Jenkins and apply the config for both frontend and backend jobs.\n If everything is good, the config will show a SAVED message.\n If there is a problem, a log will be created\n"
+echo -e "Access Jenkins and apply the config for both frontend and backend jobs.\n If everything is good, the config will show a SAVED message.\n If there is a problem, a log will be created \n \n"
 
 echo "Finished"
