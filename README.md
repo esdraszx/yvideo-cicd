@@ -1,8 +1,8 @@
 # Table of Contents
 
 * [Instructions](#instructions)
-* [Service Requirements](services/README.md)
-* [Server Scripts](scripts/README.md)
+* [Service Requirements](#service-requirements)
+* [Server Scripts](#server-scripts)
 * [Jenkins Requirements](#jenkins-requirements)
 * [Docker Instructions](#docker)
 * [Jenkins Instructions](#jenkins)
@@ -13,11 +13,13 @@
 For the CI/CD pipeline that connects the github repositories to our server, it was decided to use Jenkins. However, instead of running Jenkins in the host, a container is used to add one layer between Jenkins and the host for security purposes and migration benefits. 
 There is a docker image that already has jenkins installed, so it will be used instead of creating one. The first step is to get docker ready. 
 
-### Service Requirements
-
 ### Server Scripts
 
-In order start the se
+Before creating the services, some scripts need to be in place for the services to use. Read this file for instructions [server scripts](scripts/README.md)
+
+### Service Requirements
+
+Before running CI/CD some services need to be running in the server. Read this file for instructions [services](services/README.md)
 
 ### Jenkins Requirements
 
