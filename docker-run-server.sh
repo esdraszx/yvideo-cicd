@@ -55,7 +55,7 @@ do
 	echo "Waiting for Jenkins to be ready..."
 	sleep 5s
 	response=$(curl -s --cookie-jar /tmp/cookies -u $cred_username:$cred_password $jenkins_url/crumbIssuer/api/json)
-	response_first_char=${$response:0:1}
+	response_first_char=${response:0:1}
 	if [ "$response_first_char" == "{" ]; then
 		crumb_json=$(echo $response)
 	fi
