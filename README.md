@@ -1,17 +1,25 @@
 # Table of Contents
 
 * [Instructions](#instructions)
-* [Requirements](#requirements)
+* [Service Requirements](#service-requirements)
+* [Server Scripts](#server-scripts)
+* [Jenkins Requirements](#jenkins-requirements)
 * [Docker Instructions](#docker)
 * [Jenkins Instructions](#jenkins)
-* [Automation Script](#automation-script)
+* [Jenkins Automation Script](#automation-script)
 * [Named-pipe](#named-pipe)
 
 ## Instructions
 For the CI/CD pipeline that connects the github repositories to our server, it was decided to use Jenkins. However, instead of running Jenkins in the host, a container is used to add one layer between Jenkins and the host for security purposes and migration benefits. 
 There is a docker image that already has jenkins installed, so it will be used instead of creating one. The first step is to get docker ready. 
 
-### Requirements
+### Service Requirements
+
+### Server Scripts
+
+In order start the se
+
+### Jenkins Requirements
 
 Before getting started with docker and jenkins some steps might be needed. Create the directories that docker and jenkins will use in their programs and clone this repository into a specific folder.
 
