@@ -3,8 +3,8 @@ jenkins:
     local:
       allowsSignup: false
       users:
-       - id: yvideoadmin
-         password: yvideoadminpassword
+       - id: ${USERNAME}
+         password: ${SECRET}
   authorizationStrategy:
     globalMatrix:
       permissions:
